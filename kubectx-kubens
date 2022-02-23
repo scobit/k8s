@@ -1,3 +1,6 @@
+# github page
+https://github.com/ahmetb/kubectx
+
 # add debian repository
 vim /etc/apt/sources.list
 deb [trusted=yes] http://ftp.de.debian.org/debian buster main
