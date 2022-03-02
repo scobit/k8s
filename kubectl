@@ -1,0 +1,4 @@
+# kubectl config location
+~/.kube/config
+
+#
