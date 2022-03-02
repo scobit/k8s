@@ -10,6 +10,9 @@ kubectl cluster-info
 # get nodes
 kubectl get nodes|node|no
 
+# get pods
+kubectl get pods|pod|po
+
 # configutarion in linux
 echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
 exit
@@ -20,4 +23,36 @@ kubectl label node NodeName node-role.kubernetes.io/worker=
 
 # get kubectl client version
 kubectl version --client
+
+# delete pod
+kubectl delete pods PodName
+
+# get detail information about pod
+kubectl describe pods PodName
+
+# create pod
+kubectl run hello --generator=run-pod/v1 --image=httpd:ImageName --port=80
+kubectl run hello  --image=adv4000/k8sphp:latest --port=80
+
+
+# launch shell command in pod
+kubectl exec PodName date
+kubectl exec PodName -- date
+
+# launch shell from pod
+kubectl exec -it hello sh
+
+# get pod logs
+kubectl logs PodName
+
+# port forward for pod
+kubectl port-forward PodName 5555:80
+
+# create deployment from file
+kubectl apply -f front.yaml
+
+# delete deploymetn from file
+kubectl delete -f front.yaml
+
+
 
