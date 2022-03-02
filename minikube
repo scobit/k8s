@@ -1,1 +1,7 @@
+# check version
+minikube version
 
+# start existing or create and start new cluster
+minikube start
+
+#
