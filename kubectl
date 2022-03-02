@@ -1,6 +1,10 @@
 # kubectl config location
 ~/.kube/config
 
+# get help
+kubectl --help
+kubectl subcommand --help
+
 # check components status
 kubectl get componentstatus
 
@@ -54,5 +58,35 @@ kubectl apply -f front.yaml
 # delete deploymetn from file
 kubectl delete -f front.yaml
 
+# get deployments 
+kubectl get deployments|deployment|deploy
+
+kubectl create deployment alex --image adv4000/k8sphp:latest
+
+kubectl scale deployment alex --replicas 4
+
+kubectl get rs
+
+kubectl autoscale dempoyment deploymentName --min=4 --max=6 --cpu-percent=80  
+
+hpa - horizontal pod autoscaler
+
+kubectl get hpa
+
+kubectl rollout history deployment/depName
+
+kubectl rollout status deployment/depName
+
+# --record deprecated
+kubectl set image deployment/depName k8sphp=adv/k8sphp:version1 --record
+
+# возврат на предыдщую версию
+kubectl rollout undo deployment/depName
+
+# возврат на определённую версию
+kubectl rollout undo deployment/depName --to-revision=2
+
+# deploy latest version
+kubectl rollout restart deployment/depName
 
 
