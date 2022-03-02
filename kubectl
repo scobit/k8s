@@ -121,3 +121,7 @@ kubectl describe nodes | grep ExternalIP
 
 # not working try kubectl expose service find info 
 kubectl expose deployment alex --type=ExternalName --port 80
+
+
+# LoadBalancer - только в cloud Clusters (aws, gcp, sazure)
+kubectl expose deployment alex --type=LoadBalancer --port 80
