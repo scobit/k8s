@@ -4,4 +4,6 @@ minikube version
 # start existing or create and start new cluster
 minikube start
 
-#
+# iso file minikube destination 
+~/.minikube
+
