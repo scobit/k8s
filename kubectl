@@ -1,4 +1,8 @@
 # kubectl config location
 ~/.kube/config
 
-#
+# check components status
+kubectl get componentstatus
+
+# get cluster info
+kubectl cluster-info
