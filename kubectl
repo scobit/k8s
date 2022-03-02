@@ -31,6 +31,9 @@ kubectl version --client
 # delete pod
 kubectl delete pods PodName
 
+# delete all pods
+kubectl delete pods --all
+
 # get detail information about pod
 kubectl describe pods PodName
 
@@ -61,32 +64,48 @@ kubectl delete -f front.yaml
 # get deployments 
 kubectl get deployments|deployment|deploy
 
-kubectl create deployment alex --image adv4000/k8sphp:latest
+# create deployment 
+kubectl create deployment front --image serfisar/uap:latest
 
+# add replicas
 kubectl scale deployment alex --replicas 4
 
+# get replicaset
 kubectl get rs
 
+# make autoscale for deployment
 kubectl autoscale dempoyment deploymentName --min=4 --max=6 --cpu-percent=80  
 
-hpa - horizontal pod autoscaler
-
+# get hpa - horizontal pod autoscaler
 kubectl get hpa
 
+# 
 kubectl rollout history deployment/depName
 
+#
 kubectl rollout status deployment/depName
 
 # --record deprecated
 kubectl set image deployment/depName k8sphp=adv/k8sphp:version1 --record
 
-# возврат на предыдщую версию
+# back to previous version
 kubectl rollout undo deployment/depName
 
-# возврат на определённую версию
+# back to specific version
 kubectl rollout undo deployment/depName --to-revision=2
 
 # deploy latest version
 kubectl rollout restart deployment/depName
 
+# delete all deployment
+kubectl delete deployment --all
 
+# get services
+kubectl get services|svc
+
+# expose port ClusterIP - IP только внутри K8S cluster (default)
+kubectl expose deployment alex --type=ClusterIP --port 80
+kubectl expose pod alex --type=ClusterIP --port 80
+
+# delete service
+kubectl delete service ServiceName
