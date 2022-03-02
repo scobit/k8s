@@ -15,4 +15,9 @@ echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
 exit
 login
 
-#
+# change label node to worker
+kubectl label node NodeName node-role.kubernetes.io/worker=
+
+# get kubectl client version
+kubectl version --client
+
