@@ -6,3 +6,13 @@ kubectl get componentstatus
 
 # get cluster info
 kubectl cluster-info
+
+# get nodes
+kubectl get nodes|node|no
+
+# configutarion in linux
+echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
+exit
+login
+
+#
