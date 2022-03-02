@@ -107,5 +107,17 @@ kubectl get services|svc
 kubectl expose deployment alex --type=ClusterIP --port 80
 kubectl expose pod alex --type=ClusterIP --port 80
 
+# expose port NodePort - определённый порт на всех k8s worker nodes
+kubectl expose deployment alex --type=NodePort --port 80
+
 # delete service
 kubectl delete service ServiceName
+
+# External name - DNS CNAME Record
+
+# describe nodes
+kubectl describe nodes | grep ExternalIP
+
+
+# not working try kubectl expose service find info 
+kubectl expose deployment alex --type=ExternalName --port 80
