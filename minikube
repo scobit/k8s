@@ -14,6 +14,7 @@ minikube start
 
 # start with specific cluster name
 minikube start -p MyClusterName
+minikube start --profile MyClusterName
 
 # create new cluster with specific parameters
 minikube start --cpus=4 --memory=8gb | --memory=8000mb --disk-size=25gb
