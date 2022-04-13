@@ -1,6 +1,11 @@
 # документация по установке
 https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 
+# help
+minikube --help
+minikube start --help
+
+
 # check version
 minikube version
 
@@ -12,6 +17,9 @@ minikube start -p MyClusterName
 
 # create new cluster with specific parameters
 minikube start --cpus=4 --memory=8gb | --memory=8000mb --disk-size=25gb
+
+# check status
+kubectl status
 
 # stop cluster
 minikube stop
