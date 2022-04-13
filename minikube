@@ -1,3 +1,6 @@
+# документация по установке
+https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
+
 # check version
 minikube version
 
