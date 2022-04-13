@@ -1,6 +1,32 @@
 # kubectl config location
 ~/.kube/config
 
+состоит из 4 секций.
+список кластеров
+список контекстов
+текущий контекст
+список пользователей
+
+# переопределить расположение config 
+export KUBECONFIG=/path/file
+
+# вариант с несколькими конфигами
+export KUBECONFIG=/path/file:/path2/file2
+
+
+# добавление кластера в конфиг через команду
+kubectl config set-cluster MyClusterName --server=https://k8s.com:8443 --certificate-authority=path_to_file/cafile
+
+# добавление пользователя в конфиг
+kubectl config set-credentials temp --username=temp --password=my_password
+
+# добавление пользователя в конфиг с токеном
+kubectl config set-credentials temp --token=my_token
+
+# добавление контекста в конфиг
+kubectl config set-context some-context --cluster=My_Cluster --user=temp --namespace=some_namespace
+
+
 # get help
 kubectl --help
 kubectl subcommand --help
