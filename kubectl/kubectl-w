@@ -11,6 +11,12 @@ kubectl get componentstatus
 # get cluster info
 kubectl cluster-info
 
+# version
+kubectl version
+
+# only client version
+kubectl version --client
+
 # get nodes
 kubectl get nodes|node|no
 
