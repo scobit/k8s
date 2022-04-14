@@ -48,9 +48,6 @@ kubectl config delete-context some-context
 kubectl --help
 kubectl subcommand --help
 
-# check components status
-kubectl get componentstatus
-
 # get cluster info
 kubectl cluster-info
 
@@ -59,12 +56,6 @@ kubectl version
 
 # only client version
 kubectl version --client
-
-# get nodes
-kubectl get nodes|node|no
-
-# get pods
-kubectl get pods|pod|po
 
 # configutarion in linux
 echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
@@ -110,8 +101,7 @@ kubectl apply -f front.yaml
 # delete deploymetn from file
 kubectl delete -f front.yaml
 
-# get deployments 
-kubectl get deployments|deployment|deploy
+
 
 # create deployment 
 kubectl create deployment front --image serfisar/uap:latest
@@ -119,14 +109,8 @@ kubectl create deployment front --image serfisar/uap:latest
 # add replicas
 kubectl scale deployment alex --replicas 4
 
-# get replicaset
-kubectl get rs
-
 # make autoscale for deployment
 kubectl autoscale dempoyment deploymentName --min=4 --max=6 --cpu-percent=80  
-
-# get hpa - horizontal pod autoscaler
-kubectl get hpa
 
 # 
 kubectl rollout history deployment/depName
@@ -148,9 +132,6 @@ kubectl rollout restart deployment/depName
 
 # delete all deployment
 kubectl delete deployment --all
-
-# get services
-kubectl get services|svc
 
 # expose port ClusterIP - IP только внутри K8S cluster (default)
 kubectl expose deployment alex --type=ClusterIP --port 80
