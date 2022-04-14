@@ -79,12 +79,6 @@ kubectl run hello --generator=run-pod/v1 --image=httpd:ImageName --port=80
 kubectl run hello  --image=adv4000/k8sphp:latest --port=80
 
 
-# get pod logs
-kubectl logs PodName
-
-# create deployment from file
-kubectl apply -f front.yaml
-
 # delete deploymetn from file
 kubectl delete -f front.yaml
 
