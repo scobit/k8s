@@ -4,3 +4,8 @@ kubectl apply -f https://k8s.io/examples/pods/pod-nginx.yaml
 # create pod from manifest
 kubectl apply -f file.yml
 
+# create deployment from manifest
+kubectl apply -f file.yaml
+
+
+
