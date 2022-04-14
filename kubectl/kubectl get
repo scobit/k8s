@@ -1,2 +1,24 @@
 # get pods from all namespaces
 kubectl get pods --all-namespaces
+
+# get pods
+kubectl get pods|pod|po
+
+# get nodes
+kubectl get nodes|node|no
+
+# check components status
+kubectl get componentstatus
+
+# get deployments 
+kubectl get deployments|deployment|deploy
+
+# get replicaset
+kubectl get rs
+
+# get hpa - horizontal pod autoscaler
+kubectl get hpa
+
+# get services
+kubectl get services|svc
+
