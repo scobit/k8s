@@ -74,9 +74,6 @@ kubectl delete pods PodName
 # delete all pods
 kubectl delete pods --all
 
-# get detail information about pod
-kubectl describe pods PodName
-
 # create pod
 kubectl run hello --generator=run-pod/v1 --image=httpd:ImageName --port=80
 kubectl run hello  --image=adv4000/k8sphp:latest --port=80
@@ -100,8 +97,6 @@ kubectl apply -f front.yaml
 
 # delete deploymetn from file
 kubectl delete -f front.yaml
-
-
 
 # create deployment 
 kubectl create deployment front --image serfisar/uap:latest
@@ -142,11 +137,6 @@ kubectl expose deployment alex --type=NodePort --port 80
 
 # delete service
 kubectl delete service ServiceName
-
-# External name - DNS CNAME Record
-
-# describe nodes
-kubectl describe nodes | grep ExternalIP
 
 
 # not working try kubectl expose service find info 
