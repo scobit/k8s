@@ -1,0 +1,2 @@
+# run pod
+kubectl run app-kuber-1 --image=bokovets/kuber:0.1 --port=8000
