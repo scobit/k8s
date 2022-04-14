@@ -68,19 +68,9 @@ kubectl label node NodeName node-role.kubernetes.io/worker=
 # get kubectl client version
 kubectl version --client
 
-# delete pod
-kubectl delete pods PodName
-
-# delete all pods
-kubectl delete pods --all
-
 # create pod
 kubectl run hello --generator=run-pod/v1 --image=httpd:ImageName --port=80
 kubectl run hello  --image=adv4000/k8sphp:latest --port=80
-
-
-# delete deploymetn from file
-kubectl delete -f front.yaml
 
 # create deployment 
 kubectl create deployment front --image serfisar/uap:latest
@@ -109,9 +99,6 @@ kubectl rollout undo deployment/depName --to-revision=2
 # deploy latest version
 kubectl rollout restart deployment/depName
 
-# delete all deployment
-kubectl delete deployment --all
-
 # expose port ClusterIP - IP только внутри K8S cluster (default)
 kubectl expose deployment alex --type=ClusterIP --port 80
 kubectl expose pod alex --type=ClusterIP --port 80
@@ -119,13 +106,8 @@ kubectl expose pod alex --type=ClusterIP --port 80
 # expose port NodePort - определённый порт на всех k8s worker nodes
 kubectl expose deployment alex --type=NodePort --port 80
 
-# delete service
-kubectl delete service ServiceName
-
-
 # not working try kubectl expose service find info 
 kubectl expose deployment alex --type=ExternalName --port 80
-
 
 # LoadBalancer - только в cloud Clusters (aws, gcp, sazure)
 kubectl expose deployment alex --type=LoadBalancer --port 80
