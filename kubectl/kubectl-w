@@ -79,13 +79,6 @@ kubectl run hello --generator=run-pod/v1 --image=httpd:ImageName --port=80
 kubectl run hello  --image=adv4000/k8sphp:latest --port=80
 
 
-# launch shell command in pod
-kubectl exec PodName date
-kubectl exec PodName -- date
-
-# launch shell from pod
-kubectl exec -it hello sh
-
 # get pod logs
 kubectl logs PodName
 
