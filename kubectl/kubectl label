@@ -1,0 +1,2 @@
+# add label to existing pod
+kubectl label po PodName LabelName=LabelValue
