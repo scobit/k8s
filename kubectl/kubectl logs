@@ -1,2 +1,5 @@
 # get pod logs
 kubectl logs PodName
+
+# get pod logs from specific container
+kubectl logs PodName --conatiner ContainerName
