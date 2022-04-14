@@ -1,0 +1,2 @@
+# get pod logs
+kubectl logs PodName
