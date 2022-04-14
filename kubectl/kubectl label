@@ -1,2 +1,5 @@
 # add label to existing pod
 kubectl label po PodName LabelName=LabelValue
+
+# add label to existing node
+kubectl label node NodeName LabelName=LabelValue
