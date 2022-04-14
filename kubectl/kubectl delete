@@ -1,0 +1,18 @@
+# delete pod
+kubectl delete pods PodName
+
+# delete all pods
+kubectl delete pods --all
+
+# delete deployment from file
+kubectl delete -f file.yaml
+
+# delete pod from file
+kubectl delete -f file.yaml
+
+# delete all deployment
+kubectl delete deployment --all
+
+# delete service
+kubectl delete service ServiceName
+
