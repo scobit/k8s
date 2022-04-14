@@ -1,0 +1,13 @@
+# launch shell command in pod
+# deprecated
+kubectl exec PodName date
+new
+kubectl exec PodName -- date
+
+# launch shell from pod
+kubectl exec -it PodName -- /bin/bash
+kubectl exec -it PodName -- /bin/sh
+
+# launch shell from specific container in pod
+kubectl exec -it PodName --container ContainerName -- /bin/bash
+
