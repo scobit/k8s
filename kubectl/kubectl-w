@@ -82,9 +82,6 @@ kubectl run hello  --image=adv4000/k8sphp:latest --port=80
 # get pod logs
 kubectl logs PodName
 
-# port forward for pod
-kubectl port-forward PodName 5555:80
-
 # create deployment from file
 kubectl apply -f front.yaml
 
