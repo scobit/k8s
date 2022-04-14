@@ -7,6 +7,12 @@ kubectl get pods|pod|po
 # get information about pod in yaml format
 kubectl get pod PodName -o yaml
 
+# get pod info with labels
+kubectl get pods --show-labels
+
+# get only specific lables
+kubectl get pod -L environment,app 
+
 # get nodes
 kubectl get nodes|node|no
 
