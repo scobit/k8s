@@ -1,0 +1,2 @@
+# port forward for pod
+kubectl port-forward PodName 5555:80
