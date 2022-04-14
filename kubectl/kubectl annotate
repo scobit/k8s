@@ -1,0 +1,2 @@
+# add annotation to pod
+kubectl annotate pod PodName AnnotationName/AnnotationName2="AnnotationValue"
