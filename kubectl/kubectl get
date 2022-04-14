@@ -13,6 +13,7 @@ kubectl get pods --show-labels
 # get only specific lables
 kubectl get pod -L environment,app 
 
+
 # selector, with several arguments works as logical AND
 kubectl get po -l LabelName=LabelValue
 kubectl get po -l LabelName
@@ -27,6 +28,9 @@ kubectl get po -l '!LabelName'
 kubectl get pods -l 'LabelName in (LabelValue)'
 kubectl get pods -l 'LabelName notin (LabelValue)'
 
+
+# get namespaces
+kubectl get ns
 
 # get nodes
 kubectl get nodes|node|no
