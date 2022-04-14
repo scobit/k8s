@@ -1,0 +1,7 @@
+# describe nodes
+# External name - DNS CNAME Record
+kubectl describe nodes | grep ExternalIP
+
+# get detail information about pod
+kubectl describe pods PodName
+
