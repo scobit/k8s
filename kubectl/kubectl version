@@ -3,3 +3,8 @@ kubectl version
 
 # only client version
 kubectl version --client
+
+# get output in specific format
+kubectl version -o json|yaml
+
+
