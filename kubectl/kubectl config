@@ -1,1 +1,3 @@
+# view current config
+kubectl config view
 
