@@ -1,6 +1,9 @@
 # get pods from all namespaces
 kubectl get pods --all-namespaces
 
+# get pods and watch
+kubectl get pods --watch
+
 # get pods
 kubectl get pods|pod|po
 
