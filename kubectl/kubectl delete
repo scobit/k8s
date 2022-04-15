@@ -1,6 +1,9 @@
 # delete pod
 kubectl delete pods PodName
 
+# delete pod in specific namespace
+kubectl delete -n NamespaceName pod PodName
+
 # delete all pods
 kubectl delete pods --all
 
@@ -16,3 +19,8 @@ kubectl delete deployment --all
 # delete service
 kubectl delete service ServiceName
 
+# delete pod by labels
+kubectl delete po -l LabelName=LabelValue
+
+# delete namespace (pods in namespace will be also deleted)
+kubectl delete ns NamespaceName
