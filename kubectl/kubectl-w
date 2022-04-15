@@ -48,9 +48,6 @@ kubectl config delete-context some-context
 kubectl --help
 kubectl subcommand --help
 
-# get cluster info
-kubectl cluster-info
-
 # configutarion in linux
 echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
 exit
