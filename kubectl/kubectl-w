@@ -51,12 +51,6 @@ kubectl subcommand --help
 # get cluster info
 kubectl cluster-info
 
-# version
-kubectl version
-
-# only client version
-kubectl version --client
-
 # configutarion in linux
 echo "export PATH=$PATH:/kubernetes/" >> etc/bash.bashrc
 exit
