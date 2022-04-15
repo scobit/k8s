@@ -1,0 +1,5 @@
+# version
+kubectl version
+
+# only client version
+kubectl version --client
