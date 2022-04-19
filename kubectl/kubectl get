@@ -53,3 +53,6 @@ kubectl get hpa
 # get services
 kubectl get services|svc
 
+# get replication controllers
+kubectl get rc
+
