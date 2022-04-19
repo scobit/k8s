@@ -3,3 +3,6 @@ kubectl label po PodName LabelName=LabelValue
 
 # add label to existing node
 kubectl label node NodeName LabelName=LabelValue
+
+# change label for pod
+kubectl label pod PodName Label=LabelValue --overwrite
