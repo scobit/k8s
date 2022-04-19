@@ -24,3 +24,6 @@ kubectl delete po -l LabelName=LabelValue
 
 # delete namespace (pods in namespace will be also deleted)
 kubectl delete ns NamespaceName
+
+# delete rc 
+kubectl delete rc RcName
