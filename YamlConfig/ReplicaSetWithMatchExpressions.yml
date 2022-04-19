@@ -12,7 +12,7 @@ spec:
           - kuber
           - http-server
       - key: env
-        operator: Exists
+        operator: Exists  # DoesNotExist
   template:
     metadata:
       labels:
