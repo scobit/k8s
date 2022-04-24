@@ -1,6 +1,9 @@
 # get pods from all namespaces
 kubectl get pods --all-namespaces
 
+# we can get several objects at one time
+kubectl get pods,svc -n kube-system
+
 # get pods and watch
 kubectl get pods --watch
 
