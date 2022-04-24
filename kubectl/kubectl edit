@@ -1,0 +1,2 @@
+# edit object configuration
+kubectl edit NameOfobject -n NamespaceName
