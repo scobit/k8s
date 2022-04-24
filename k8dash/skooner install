@@ -1,0 +1,5 @@
+# github project
+https://github.com/skooner-k8s/skooner
+
+# install
+k apply -f DeploymentService.yml
