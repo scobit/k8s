@@ -32,6 +32,12 @@ kubectl config current-context
 # show all contexts
 kubectl config get-contexts
 
+#List the API versions that are available.
+kubectl api-versions  
+
+#List the API resources that are available.
+kubectl api-resources 
+
 # change context
 kubectl use-context NameOfContext
 
