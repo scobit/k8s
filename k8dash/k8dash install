@@ -1,1 +1,2 @@
-asd
+# install
+k apply -f DeploymentService.yml
