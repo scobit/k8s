@@ -1,0 +1,2 @@
+# list of subjects and verbs
+kubectl api-resources --sort-by name -o wide
