@@ -3,3 +3,4 @@ kubectl create namespace NamespaceName
 
 # create deployment
 kubectl create deployment DeploymentName --image=/url
+kubectl create deployment deploymentName --image adv4000/k8sphp:latest
