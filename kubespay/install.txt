@@ -91,74 +91,83 @@ calico-rr
 
 vim inventory/my_cluster/group_vars/k8s_cluster/k8s-cluster.yaml
 
+# выбор версии kubernetes
+kube_version: v1.16.8
 
-
+# 
 kube_network_plugin: calico
 
+#
 kube_network_plugin: flannel
 
-это именно плагин ансибл в kuberpray
-а не плагин кубернетес
+# важно понимать, что это именно сетевые плагины ансибл в kuberpray, а не плагин кубернетес
 
+# это имя домена которое будет присваиваться подам в FQDN именовании
 cluster_name: cluster.local 
-это имя доена которое будет присваиваться подом в FQDN именовании
 
-kubernetes имеет свой собственный DNS
 
+# kubernetes имеет свой собственный DNS
 dns_mode: coredns
 
+
+# в каждой ноде будет запускаться отдельный кешерующий dns сервер и контейнеры будут обращатся к нему, а не к глобальному
+# что ускоряет работу при преобразованию имён
 enable_nodelocaldns: true
 
-в каждой ноде будет запускаться отдельный кешерующий dns сервер
-и контейнеры будут обращатся к нему, а не к глобальному
-укоряет работу по преобразованию имён
 
 
-group_vars/k8s_cluster/addons.yaml
+# управление плагинами kubernetes
+vim inventory/group_vars/k8s_cluster/addons.yaml
 
-
+# конфигурационные файлы для сети 
 group_vars/k8s_cluster/k8s-net*.yaml
-конфигурационные файлы для сети 
+
 
 group_vars/all/*
 general configuration
 
 
 # launch
-ansible-playbook -i inventory/qwe/inventory.ini --become --become-user=root cluster.yaml
+# вариант при котором запуск производится от обычного пользоватя
+ansible-playbook -i inventory/my_cluster/inventory.ini --become --become-user=root cluster.yaml
 
-ansible-playbook -i inventory/qwe/inventory.ini cluster.yaml
+# вариант при котором запуск производится от имени root
+ansible-playbook -i inventory/my_cluster/inventory.ini cluster.yaml
 
-ansible-playbook -i inventory/qwe/inventory.ini -kKu username --become cluster.yaml
+# 
+ansible-playbook -i inventory/my_cluster/inventory.ini -kKu username --become cluster.yaml
 
 ansible особенность:
 зелёное - то, что менять не надо
 желтое - то, что изменил
 красное - ошибки
 
+# файлы пакетов, репозитория
 cat /etc/yum.repod.d/*.repo
-файлы пакетов, репозитория
+
 
 в процессе установки устаналивается docker
 и скачиваются необходимые образы
+
+docker version
 
 docker images
 
 docker ps --all
 
-kubernetes использует докер для разворачивания ресурсов
+# kubernetes использует докер для разворачивания ресурсов
 
-docker это низкоуровневая часть kubernetes
+# docker это низкоуровневая часть kubernetes
 
-# перезапуска раз в 2 секунды
+# перезапуск раз в 2 секунды
 watch docker images
 
-что лучше один большой кластер или клсатер для каждого тестового?
-лучше раздельно, это облегчает миграцию в случае необходимости 
+# что лучше один большой кластер или кластер для каждого проекта?
+# лучше раздельно, это облегчает миграцию в случае необходимости 
 
-
+# там же хранятся yml файлы всех конфигурационных подов
 /etc/kubernetes/admin.conf
-там же хранятся yml файлы всех конфигурационных подов
+
 
 kubernetes по сути это контейнер в докере ))
 
@@ -181,3 +190,15 @@ terraform
  
  
   "Работает - не трогай. Не сломалось - не чини" как то так :) 
+  
+  
+# флант
+https://www.youtube.com/watch?v=CgCLPYJRxbU
+
+# Маркелов
+https://www.kryukov.biz/2019/06/novaya-kniga-andreya-markelova/
+
+# записки линуксоида
+https://www.kryukov.biz/nemnogo-o-sebe/
+
+
