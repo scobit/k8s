@@ -1,0 +1,183 @@
+# github kubespay
+https://github.com/kubernetes-sigs/kubespray
+
+etcd - база хранения конфигурационных параметров
+
+Книги Андрея Маркелова по kubernetes
+
+Видео от флант
+наш опыт работы с kubernetes в небольших проектах
+смотреть периодически
+
+etcd серверов должно быть не чётное количество, чтобы у системы была отказоуйстойчивость при отказе одной из нод
+
+Альтернатива kubespray - rancher
+
+требование к серверам:
+отключить 
+ - swap 
+ - selinux 
+ - firewall
+ 
+т.е. условно предполагается, что k8s находится в песочнице
+
+# Под пользователем root создаём ключ (yes yes no password)
+ssh-keygen
+
+# копируем ключ на удалённую машину
+ssh-copy-id hostname
+
+kubernetes не работает с файлами hosts
+может работать с etc/resolv.conf - но это бред
+
+# устаналиваем git
+git clone https://github.com/kubernetes-sigs/kubespray.git
+
+# сменить ветку
+git checkout release-2.12
+
+# важно, чтобы плейбук запускался с той же версией ansible, что указана в requirements.txt
+
+# устаналиваем зависимости
+pip install -r requirements.txt
+
+# редактируем файл inventory
+cp -rp inventory/sample inventory/my_cluster
+vim inventory/my_cluster/inventory.ini
+
+[all]
+# определение машин входящих в кластер
+# это не FQDN хоста, а именно опредеяемое название ноды в кластере
+# в названии хостов можно использовать только маленькие буквы
+
+node1 ansible_host=192.168.0.15 # ip=10.3.0.1 etcd_member_name=etcd1
+node2 ansible_host=192.168.0.16 # ip=10.3.0.2 etcd_member_name=etcd2
+node3 ansible_host=192.168.0.17 # ip=10.3.0.3 etcd_member_name=etcd3
+
+
+[kube-master]
+# определение машин, имеющих роль master
+node1
+node2
+node3
+
+[kube-node]
+# определяем воркер ноды
+node1
+node2
+node3
+
+[calico-rr]
+
+[k8s-cluster:children]
+kube-master
+kube-node
+calico-rr
+
+
+
+# с помощью kupespray можно легко добавить мастера, но etcd добавить проблематично
+# поэтому лучше сразу предусмотреть нужное кол-во
+
+# BP чтобы мастер ноды не содержали бизнес контейнеры
+
+# есть руль, есть педали, можно порулить =)
+
+
+# директория на k8s ноде
+/etc/kubernetes - очень много вкусной информации
+
+
+
+vim inventory/my_cluster/group_vars/k8s_cluster/k8s-cluster.yaml
+
+
+
+kube_network_plugin: calico
+
+kube_network_plugin: flannel
+
+это именно плагин ансибл в kuberpray
+а не плагин кубернетес
+
+cluster_name: cluster.local 
+это имя доена которое будет присваиваться подом в FQDN именовании
+
+kubernetes имеет свой собственный DNS
+
+dns_mode: coredns
+
+enable_nodelocaldns: true
+
+в каждой ноде будет запускаться отдельный кешерующий dns сервер
+и контейнеры будут обращатся к нему, а не к глобальному
+укоряет работу по преобразованию имён
+
+
+group_vars/k8s_cluster/addons.yaml
+
+
+group_vars/k8s_cluster/k8s-net*.yaml
+конфигурационные файлы для сети 
+
+group_vars/all/*
+general configuration
+
+
+# launch
+ansible-playbook -i inventory/qwe/inventory.ini --become --become-user=root cluster.yaml
+
+ansible-playbook -i inventory/qwe/inventory.ini cluster.yaml
+
+ansible-playbook -i inventory/qwe/inventory.ini -kKu username --become cluster.yaml
+
+ansible особенность:
+зелёное - то, что менять не надо
+желтое - то, что изменил
+красное - ошибки
+
+cat /etc/yum.repod.d/*.repo
+файлы пакетов, репозитория
+
+в процессе установки устаналивается docker
+и скачиваются необходимые образы
+
+docker images
+
+docker ps --all
+
+kubernetes использует докер для разворачивания ресурсов
+
+docker это низкоуровневая часть kubernetes
+
+# перезапуска раз в 2 секунды
+watch docker images
+
+что лучше один большой кластер или клсатер для каждого тестового?
+лучше раздельно, это облегчает миграцию в случае необходимости 
+
+
+/etc/kubernetes/admin.conf
+там же хранятся yml файлы всех конфигурационных подов
+
+kubernetes по сути это контейнер в докере ))
+
+kubectl get all -n kube-system
+
+
+для добавления ноды в кластер, необходимо добавить ноду в inentory.ini
+и запустить плейбук scale.yaml
+
+# установка без интернета
+kubespray / inventory / sample / group_vars / all / offline.yml
+
+ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -kK --ask-pass --become --ask-become-pass
+
+
+vagrant
+terraform
+
+ ansible all --list-hosts
+ 
+ 
+  "Работает - не трогай. Не сломалось - не чини" как то так :) 
