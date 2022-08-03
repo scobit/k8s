@@ -173,9 +173,37 @@ kubernetes по сути это контейнер в докере ))
 
 kubectl get all -n kube-system
 
+cm - конфигурационные файлы подов, в черне так сказать =)
+
+kubectl drain nodeName
+kubectl drain nodeName --ignore-daemonsets
+очистит ноду от всех подов
+
+ps -xaf
+
+kubectl delete node nodeName
+удаление ноды
+и не забыть потом указать в kubespay
+
+DaemonSet - сущность которая гарантированно заставляет указанный под запускаться на каждой ноде k8s
 
 для добавления ноды в кластер, необходимо добавить ноду в inentory.ini
 и запустить плейбук scale.yaml
+
+для удаления ноды можно использовать плейбук remove-node.yml
+
+но это можно сделать и рвучную быстро
+
+команда host
+???
+
+kubectl describe node nodeName | less
+
+в k8s почти всё построено на базе labels
+
+kubectl cluster-info
+
+namespace -изолированные друг от друга сети
 
 # установка без интернета
 kubespray / inventory / sample / group_vars / all / offline.yml
