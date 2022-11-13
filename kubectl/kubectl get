@@ -33,6 +33,9 @@ kubectl get po -l LabelName,LabelName2=LabelValue2
 # selector logical not
 kubectl get po -l '!LabelName'
 
+# get all pods on specific node
+kubectl get pods -o wide --all-namespaces --field-selector=spec.nodeName==NodeNameHere
+
 # selector, in clause
 kubectl get pods -l 'LabelName in (LabelValue)'
 kubectl get pods -l 'LabelName notin (LabelValue)'
